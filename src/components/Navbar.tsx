@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -10,6 +11,7 @@ const navLinks = [
   { name: "Gold Investment", path: "/investment" },
   { name: "Buy & Sell", path: "/buy-sell" },
   { name: "Insights", path: "/blog" },
+  { name: "Videos", path: "/videos" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -26,7 +28,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-5">
           {navLinks.map((l) => (
             <Link
               key={l.path}
@@ -40,7 +42,8 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2">
+          <ThemeToggle />
           <a href="tel:+256709948920" className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1">
             <Phone className="w-3.5 h-3.5" /> +256 709 948920
           </a>
@@ -50,9 +53,12 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button className="text-foreground" onClick={() => setOpen(!open)}>
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

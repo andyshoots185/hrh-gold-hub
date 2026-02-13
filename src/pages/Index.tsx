@@ -6,6 +6,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import heroImage from "@/assets/gold-bars-hero.jpg";
+import consultationImg from "@/assets/consultation.jpg";
+import goldInvestmentImg from "@/assets/gold-investment.jpg";
 
 const services = [
   { icon: DollarSign, title: "Gold Buying", desc: "We purchase gold at competitive market rates with transparent valuation processes." },
@@ -34,29 +37,31 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero with background image */}
       <section className="relative pt-16 min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="Premium gold bars" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
             <div className="max-w-3xl">
               <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Uganda's Premier Gold Trading Company</p>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
                 Trusted Gold Trading &{" "}
                 <span className="gold-text-gradient">Investment Partner</span> in Uganda
               </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mb-8">
+              <p className="text-lg text-white/80 max-w-xl mb-8">
                 Buy, sell, and trade gold with confidence. HRH Gold Invest delivers secure transactions, fair pricing, and professional service you can trust.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="gold-gradient text-primary-foreground font-semibold px-8 hover:opacity-90">
                   <Link to="/buy-sell">Buy Gold</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 font-semibold px-8">
+                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-8">
                   <Link to="/buy-sell">Sell Gold</Link>
                 </Button>
-                <Button asChild size="lg" variant="ghost" className="text-muted-foreground hover:text-foreground font-semibold px-8">
+                <Button asChild size="lg" variant="ghost" className="text-white/80 hover:text-white font-semibold px-8">
                   <Link to="/contact">Contact Us</Link>
                 </Button>
               </div>
@@ -87,20 +92,21 @@ const Index = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <div className="bg-card border border-border rounded-lg p-8 text-center">
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { value: "500+", label: "Clients Served" },
-                    { value: "99%", label: "Satisfaction Rate" },
-                    { value: "24/7", label: "Support Available" },
-                    { value: "100%", label: "Secure Transactions" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <p className="font-serif text-3xl font-bold gold-text-gradient">{s.value}</p>
-                      <p className="text-sm text-muted-foreground mt-1">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
+              <div className="rounded-lg overflow-hidden">
+                <img src={consultationImg} alt="HRH Gold Invest team consultation" className="w-full h-80 object-cover rounded-lg" />
+              </div>
+              <div className="grid grid-cols-2 gap-6 mt-6">
+                {[
+                  { value: "500+", label: "Clients Served" },
+                  { value: "99%", label: "Satisfaction Rate" },
+                  { value: "24/7", label: "Support Available" },
+                  { value: "100%", label: "Secure Transactions" },
+                ].map((s) => (
+                  <div key={s.label} className="text-center">
+                    <p className="font-serif text-3xl font-bold gold-text-gradient">{s.value}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{s.label}</p>
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
           </div>
@@ -196,15 +202,7 @@ const Index = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <Card className="bg-card border-border p-8">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">Gold's Enduring Value</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Unlike paper currencies, gold maintains its purchasing power over decades. Central banks worldwide hold gold reserves as a financial safety net, and savvy investors include gold in their portfolios for stability.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  At HRH Gold Invest, we help you navigate the gold market with expert guidance, ensuring your investment is secure, transparent, and positioned for long-term growth.
-                </p>
-              </Card>
+              <img src={goldInvestmentImg} alt="Gold investment" className="w-full h-80 object-cover rounded-lg" />
             </ScrollReveal>
           </div>
         </div>
@@ -242,9 +240,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <CTABanner />
-
       <Footer />
     </div>
   );
