@@ -6,6 +6,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
+import goldInvestmentImg from "@/assets/gold-investment.jpg";
 
 const reasons = [
   { icon: TrendingUp, title: "Hedge Against Inflation", desc: "Gold consistently outperforms during economic downturns and inflationary periods." },
@@ -17,20 +19,15 @@ const reasons = [
 const Investment = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
-    <section className="pt-28 pb-20">
-      <div className="container mx-auto px-4">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Gold Investment</p>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Invest in <span className="gold-text-gradient">Gold</span> for a Secure Future
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Gold has been humanity's most trusted store of value for millennia. Let HRH Gold Invest guide your journey to financial security through strategic gold investment.
-            </p>
-          </div>
-        </ScrollReveal>
+    <PageHero
+      image={goldInvestmentImg}
+      subtitle="Gold Investment"
+      title={<>Invest in <span className="gold-text-gradient">Gold</span> for a Secure Future</>}
+      description="Gold has been humanity's most trusted store of value for millennia. Let HRH Gold Invest guide your journey to financial security."
+    />
 
+    <section className="py-20">
+      <div className="container mx-auto px-4">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {reasons.map((r, i) => (
             <ScrollReveal key={r.title} delay={i * 0.1}>
@@ -72,10 +69,10 @@ const Investment = () => (
             <Card className="bg-card border-border p-8">
               <h3 className="font-serif text-2xl font-bold text-foreground mb-4">Risk Management & Security</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                We understand that every investment carries risk. That's why HRH Gold Invest employs rigorous risk management strategies, including diversified sourcing, certified purity verification, and insured logistics.
+                We employ rigorous risk management strategies, including diversified sourcing, certified purity verification, and insured logistics.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Your gold investment is handled with the same level of security and professionalism expected by international institutional investors. Every transaction is documented, tracked, and protected.
+                Your gold investment is handled with the same level of security and professionalism expected by international institutional investors.
               </p>
               <Button asChild className="gold-gradient text-primary-foreground font-semibold hover:opacity-90">
                 <Link to="/contact">Start Investing Today</Link>
@@ -85,7 +82,7 @@ const Investment = () => (
         </div>
       </div>
     </section>
-    <CTABanner title="Ready to Build Wealth with Gold?" subtitle="Take the first step toward a secure financial future. Our experts are ready to help." primaryLabel="Start Investing" />
+    <CTABanner title="Ready to Build Wealth with Gold?" subtitle="Take the first step toward a secure financial future." primaryLabel="Start Investing" />
     <Footer />
   </div>
 );

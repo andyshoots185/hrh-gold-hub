@@ -8,6 +8,8 @@ import { useToast } from "@/hooks/use-toast";
 import ScrollReveal from "@/components/ScrollReveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
+import heroGold from "@/assets/hero-gold.jpg";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -22,20 +24,15 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <section className="pt-28 pb-20">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Contact Us</p>
-              <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Get in <span className="gold-text-gradient">Touch</span>
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Ready to start trading gold? Have questions? Our team is here to help. Reach out today.
-              </p>
-            </div>
-          </ScrollReveal>
+      <PageHero
+        image={heroGold}
+        subtitle="Contact Us"
+        title={<>Get in <span className="gold-text-gradient">Touch</span></>}
+        description="Ready to start trading gold? Have questions? Our team is here to help."
+      />
 
+      <section className="py-20">
+        <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             <ScrollReveal>
               <div>
@@ -69,23 +66,15 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Map */}
                 <div className="rounded-lg overflow-hidden border border-border h-64">
                   <iframe
                     title="HRH Gold Invest Location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19891888283!2d32.44971899675498!3d0.3147601285498812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc0f90af3bab%3A0x21e9f0bce3e3e96e!2sKampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
               </div>
             </ScrollReveal>
-
             <ScrollReveal delay={0.2}>
               <div className="bg-card border border-border rounded-lg p-8">
                 <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Send an Inquiry</h2>

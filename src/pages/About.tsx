@@ -5,6 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
+import consultationImg from "@/assets/consultation.jpg";
 
 const values = [
   { icon: Shield, title: "Integrity", desc: "We conduct every transaction with honesty and ethical standards." },
@@ -16,18 +18,15 @@ const values = [
 const About = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
-    <section className="pt-28 pb-20">
-      <div className="container mx-auto px-4">
-        <ScrollReveal>
-          <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">About Us</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Your Trusted <span className="gold-text-gradient">Gold Partner</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mb-12">
-            HRH Gold Invest is a premier Ugandan gold trading company committed to providing secure, transparent, and professional gold buying, selling, and investment services.
-          </p>
-        </ScrollReveal>
+    <PageHero
+      image={consultationImg}
+      subtitle="About Us"
+      title={<>Your Trusted <span className="gold-text-gradient">Gold Partner</span></>}
+      description="HRH Gold Invest is a premier Ugandan gold trading company committed to providing secure, transparent, and professional gold services."
+    />
 
+    <section className="py-20">
+      <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 mb-20">
           <ScrollReveal>
             <div className="flex items-start gap-4">
@@ -50,7 +49,7 @@ const About = () => (
               <div>
                 <h2 className="font-serif text-2xl font-bold text-foreground mb-3">Our Vision</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  To become East Africa's leading gold investment company, recognized globally for our integrity, professionalism, and commitment to client success in gold trading and investment.
+                  To become East Africa's leading gold investment company, recognized globally for our integrity, professionalism, and commitment to client success.
                 </p>
               </div>
             </div>
@@ -78,10 +77,10 @@ const About = () => (
           <div className="bg-card border border-border rounded-lg p-8 md:p-12">
             <h2 className="font-serif text-3xl font-bold text-foreground mb-4">What Makes Us <span className="gold-text-gradient">Different</span></h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Unlike other gold dealers, HRH Gold Invest combines local expertise with international standards. Our team of experienced professionals ensures that every transaction — whether you're buying, selling, or investing — is handled with the utmost care and transparency.
+              Unlike other gold dealers, HRH Gold Invest combines local expertise with international standards. Our team ensures every transaction is handled with the utmost care and transparency.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              We pride ourselves on building long-term relationships with our clients, offering personalized service, competitive pricing, and a secure trading environment that meets the highest industry standards.
+              We pride ourselves on building long-term relationships with our clients, offering personalized service, competitive pricing, and a secure trading environment.
             </p>
             <Button asChild className="gold-gradient text-primary-foreground font-semibold hover:opacity-90">
               <Link to="/contact">Work With Us</Link>
@@ -90,7 +89,7 @@ const About = () => (
         </ScrollReveal>
       </div>
     </section>
-    <CTABanner title="Ready to Partner with Us?" subtitle="Experience the HRH Gold Invest difference. Contact us today to start your gold journey." primaryLabel="Contact Us" />
+    <CTABanner title="Ready to Partner with Us?" subtitle="Experience the HRH Gold Invest difference. Contact us today." primaryLabel="Contact Us" />
     <Footer />
   </div>
 );
