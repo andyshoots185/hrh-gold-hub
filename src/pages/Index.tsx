@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, DollarSign, Users, Eye, Award, TrendingUp, BarChart3, Gem, Truck, HandshakeIcon } from "lucide-react";
+import { Shield, DollarSign, Users, Eye, Award, TrendingUp, BarChart3, Gem, Truck, HandshakeIcon, Globe, Clock } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import ScrollReveal from "@/components/ScrollReveal";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
@@ -9,6 +10,9 @@ import Footer from "@/components/Footer";
 import heroImage from "@/assets/gold-bars-hero.jpg";
 import consultationImg from "@/assets/consultation.jpg";
 import goldInvestmentImg from "@/assets/gold-investment.jpg";
+import goldHeroSide from "@/assets/gold-hero-side.jpg";
+import refineryImg from "@/assets/refinery.jpg";
+import miningImg from "@/assets/mining-operations.jpg";
 
 const services = [
   { icon: DollarSign, title: "Gold Buying", desc: "We purchase gold at competitive market rates with transparent valuation processes." },
@@ -32,38 +36,52 @@ const testimonials = [
   { name: "David Mukiibi", role: "International Trader", text: "Outstanding service! The team's expertise and commitment to transparency set them apart from any other gold dealer." },
 ];
 
+const faqs = [
+  { q: "How do I start buying gold with HRH Gold Invest?", a: "Simply contact us via phone, WhatsApp, or our contact form. Our team will guide you through the process — from selecting the right product to secure payment and delivery." },
+  { q: "What types of gold do you sell?", a: "We offer gold bars (1g to 1kg), gold dust, raw nuggets, and refined gold products. All come with purity certificates and full documentation." },
+  { q: "How is the price of gold determined?", a: "Our pricing is based on real-time international gold market rates (LBMA/COMEX), ensuring you always get a fair, transparent price." },
+  { q: "Is my transaction secure?", a: "Absolutely. We use bank-grade security protocols, insured logistics, and comprehensive documentation for every transaction. Your gold and payment are fully protected." },
+  { q: "Can I sell my gold to HRH Gold Invest?", a: "Yes! We buy all types of gold. Our experts will test purity on-site using XRF technology and provide an instant fair market offer. Payment is processed within 24 hours." },
+  { q: "Do you ship gold internationally?", a: "Yes, we facilitate international transactions with fully insured and tracked shipments meeting international compliance standards including KYC and AML requirements." },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero with background image */}
+      {/* Hero with background image + side image */}
       <section className="relative pt-16 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Premium gold bars" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Premium gold bars" className="w-full h-full object-cover animate-[heroZoom_20s_ease-in-out_infinite_alternate]" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
-            <div className="max-w-3xl">
-              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Uganda's Premier Gold Trading Company</p>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                Trusted Gold Trading &{" "}
-                <span className="gold-text-gradient">Investment Partner</span> in Uganda
-              </h1>
-              <p className="text-lg text-white/80 max-w-xl mb-8">
-                Buy, sell, and trade gold with confidence. HRH Gold Invest delivers secure transactions, fair pricing, and professional service you can trust.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="gold-gradient text-primary-foreground font-semibold px-8 hover:opacity-90">
-                  <Link to="/buy-sell">Buy Gold</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-8">
-                  <Link to="/buy-sell">Sell Gold</Link>
-                </Button>
-                <Button asChild size="lg" variant="ghost" className="text-white/80 hover:text-white font-semibold px-8">
-                  <Link to="/contact">Contact Us</Link>
-                </Button>
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">Uganda's Premier Gold Trading Company</p>
+                <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                  Trusted Gold Trading &{" "}
+                  <span className="gold-text-gradient">Investment Partner</span> in Uganda
+                </h1>
+                <p className="text-lg text-white/80 max-w-xl mb-8">
+                  Buy, sell, and trade gold with confidence. HRH Gold Invest delivers secure transactions, fair pricing, and professional service you can trust.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" className="gold-gradient text-primary-foreground font-semibold px-8 hover:opacity-90">
+                    <Link to="/buy-sell">Buy Gold</Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-8">
+                    <Link to="/buy-sell">Sell Gold</Link>
+                  </Button>
+                  <Button asChild size="lg" variant="ghost" className="text-white/80 hover:text-white font-semibold px-8">
+                    <Link to="/contact">Contact Us</Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="hidden md:block">
+                <img src={goldHeroSide} alt="Premium gold bars" className="w-full max-w-md mx-auto rounded-lg shadow-2xl border-2 border-primary/30" />
               </div>
             </div>
           </ScrollReveal>
@@ -208,6 +226,69 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Our Operations Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <ScrollReveal>
+              <img src={refineryImg} alt="Gold refinery operations" className="w-full h-80 object-cover rounded-lg" />
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div>
+                <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Our Operations</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  From Mine to <span className="gold-text-gradient">Market</span>
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  We maintain a fully integrated gold supply chain — from sourcing at verified mines to refining, testing, and delivery. Every step is documented and audited for quality and compliance.
+                </p>
+                <div className="grid grid-cols-2 gap-4 mt-6">
+                  {[
+                    { icon: Globe, label: "Global Network" },
+                    { icon: Shield, label: "Insured Logistics" },
+                    { icon: Award, label: "Certified Purity" },
+                    { icon: Clock, label: "24h Processing" },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-center gap-3 p-3 bg-card rounded-lg border border-border">
+                      <item.icon className="w-5 h-5 text-primary shrink-0" />
+                      <span className="text-sm text-foreground font-medium">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Mining Showcase Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <ScrollReveal>
+              <div>
+                <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Ethical Sourcing</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  Responsibly <span className="gold-text-gradient">Sourced Gold</span>
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  We work directly with verified mining communities across Uganda and East Africa. Our ethical sourcing program ensures fair wages for miners, environmentally responsible extraction, and full traceability of every gram of gold.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  By choosing HRH Gold Invest, you're supporting sustainable mining practices and contributing to the economic development of local communities.
+                </p>
+                <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                  <Link to="/services">Learn More</Link>
+                </Button>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <img src={miningImg} alt="Mining operations" className="w-full h-80 object-cover rounded-lg" />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4">
@@ -237,6 +318,32 @@ const Index = () => {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">FAQ</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">Frequently Asked <span className="gold-text-gradient">Questions</span></h2>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                  <AccordionTrigger className="text-foreground font-serif text-left hover:text-primary hover:no-underline">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </ScrollReveal>
         </div>
       </section>
 
