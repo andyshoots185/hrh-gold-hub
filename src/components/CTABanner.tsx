@@ -29,7 +29,7 @@ const CTABanner = ({
           <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90 font-semibold px-8">
             <Link to={primaryLink}>{primaryLabel}</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 font-semibold px-8">
+          <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 font-semibold px-8">
             <a href={secondaryLink}><Phone className="w-4 h-4 mr-2" />{secondaryLabel}</a>
           </Button>
         </div>
