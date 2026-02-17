@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import goldTradingImg from "@/assets/gold-trading.jpg";
+import goldSellingImg from "@/assets/gold-selling.jpg";
 import goldSafeImg from "@/assets/goldSafeStorage.jpg";
 import miningImg from "@/assets/mining-operations.jpg";
 import consultationImg from "@/assets/consultation.jpg";
@@ -25,7 +26,7 @@ const services = [
   {
     icon: Gem,
     title: "Gold Selling",
-    image: goldTradingImg,
+    image: goldSellingImg,
     desc: "Access premium quality gold products with certified purity. We offer a wide range of gold bars and products for individual and institutional buyers.",
     details: "Every piece of gold sold by HRH Gold Invest comes with a certificate of authenticity and purity. Our product range includes 1g to 1kg gold bars, gold coins, and custom orders.",
     benefits: ["Certified purity guarantee", "Competitive pricing", "Flexible quantities from 1g", "Full documentation provided", "Conflict-free sourced gold", "Bulk discounts available"],
