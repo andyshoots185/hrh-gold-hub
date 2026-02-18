@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 import logoImg from "@/assets/logo-hrh.png";
+import GoldPriceTicker from "./GoldPriceTicker";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -22,6 +23,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <GoldPriceTicker />
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoImg} alt="HRH Gold Invest" className="h-10 w-auto" />
