@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,11 +19,41 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [tickerVisible, setTickerVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY;
+      if (current < 10) {
+        // At the very top — always show
+        setTickerVisible(true);
+      } else if (current < lastScrollY.current) {
+        // Scrolling UP → show ticker
+        setTickerVisible(true);
+      } else {
+        // Scrolling DOWN → hide ticker
+        setTickerVisible(false);
+      }
+      lastScrollY.current = current;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <GoldPriceTicker />
+      <div
+        style={{
+          maxHeight: tickerVisible ? "3rem" : "0",
+          opacity: tickerVisible ? 1 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.35s ease, opacity 0.3s ease",
+        }}
+      >
+        <GoldPriceTicker />
+      </div>
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoImg} alt="HRH Gold Invest" className="h-10 w-auto" />
