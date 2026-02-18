@@ -7,6 +7,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StatsCounter from "@/components/StatsCounter";
+import CertificationsBadges from "@/components/CertificationsBadges";
 import heroImage from "@/assets/gold-bars-hero.jpg";
 import consultationImg from "@/assets/consultation.jpg";
 import goldInvestmentImg from "@/assets/gold-investment.jpg";
@@ -51,7 +53,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero with background image + side image */}
-      <section className="relative pt-16 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-24 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImage} alt="Premium gold bars" className="w-full h-full object-cover animate-[heroZoom_20s_ease-in-out_infinite_alternate]" />
           <div className="absolute inset-0 bg-black/60" />
@@ -347,6 +349,8 @@ const Index = () => {
         </div>
       </section>
 
+      <StatsCounter />
+      <CertificationsBadges />
       <CTABanner />
       <Footer />
     </div>

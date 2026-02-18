@@ -8,7 +8,7 @@ interface PageHeroProps {
 }
 
 const PageHero = ({ image, subtitle, title, description }: PageHeroProps) => (
-  <section className="relative pt-16 min-h-[60vh] flex items-center overflow-hidden">
+  <section className="relative pt-24 min-h-[60vh] flex items-center overflow-hidden">
     <div className="absolute inset-0">
       <img
         src={image}
