@@ -20,30 +20,50 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [tickerVisible, setTickerVisible] = useState(true);
+  const [navHidden, setNavHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const scrollStopTimer = useRef<number | null>(null);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const current = window.scrollY;
+      const isMobile = window.innerWidth < 1024;
       if (current < 10) {
-        // At the very top — always show
         setTickerVisible(true);
+        setNavHidden(false);
       } else if (current < lastScrollY.current) {
-        // Scrolling UP → show ticker
         setTickerVisible(true);
+        setNavHidden(false);
       } else {
-        // Scrolling DOWN → hide ticker
-        setTickerVisible(false);
+        // Scrolling DOWN
+        // On mobile, keep ticker visible/sticky; on desktop hide it
+        setTickerVisible(isMobile ? true : false);
+        setNavHidden(true);
       }
       lastScrollY.current = current;
+
+      // When the user stops scrolling, reveal the nav again
+      if (scrollStopTimer.current) window.clearTimeout(scrollStopTimer.current);
+      scrollStopTimer.current = window.setTimeout(() => {
+        setNavHidden(false);
+        if (window.innerWidth < 1024) setTickerVisible(true);
+      }, 200);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollStopTimer.current) window.clearTimeout(scrollStopTimer.current);
+    };
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-transform duration-300 ease-out"
+      style={{
+        transform: navHidden ? "translateY(-100%)" : "translateY(0)",
+      }}
+    >
       <div
         style={{
           maxHeight: tickerVisible ? "3rem" : "0",
