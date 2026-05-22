@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import StatsCounter from "@/components/StatsCounter";
 import CertificationsBadges from "@/components/CertificationsBadges";
 import heroImage from "@/assets/gold-bars-hero.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import consultationImg from "@/assets/consultation.jpg";
 import goldInvestmentImg from "@/assets/gold-investment.jpg";
 import goldHeroSide from "@/assets/gold-hero-side.jpg";
@@ -55,8 +56,18 @@ const Index = () => {
       {/* Hero with background image + side image */}
       <section className="relative pt-24 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Premium gold bars" className="w-full h-full object-cover animate-[heroZoom_20s_ease-in-out_infinite_alternate]" />
-          <div className="absolute inset-0 bg-black/60" />
+          <video
+            src={heroVideo}
+            poster={heroImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
@@ -85,6 +96,35 @@ const Index = () => {
               <div className="hidden md:block">
                 <img src={goldHeroSide} alt="Premium gold bars" className="w-full max-w-md mx-auto rounded-lg shadow-2xl border-2 border-primary/30" />
               </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Featured Video Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Watch & Learn</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
+                Inside <span className="gold-text-gradient">HRH Gold Invest</span>
+              </h2>
+              <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                Take a closer look at how we source, refine, and trade gold with uncompromising quality and transparency.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden border-2 border-primary/30 shadow-2xl">
+              <video
+                src={heroVideo}
+                poster={heroImage}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-auto aspect-video object-cover bg-black"
+              />
             </div>
           </ScrollReveal>
         </div>
