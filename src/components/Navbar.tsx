@@ -75,7 +75,7 @@ const Navbar = () => {
       <nav
         className="fixed left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-all duration-300 ease-out"
         style={{
-          top: tickerVisible ? "var(--ticker-h, 2.25rem)" : "0",
+          top: tickerVisible ? "2.25rem" : "0",
           transform: navHidden ? "translateY(-120%)" : "translateY(0)",
         }}
       >
