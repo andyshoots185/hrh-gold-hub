@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import heroVideo from "@/assets/hero-video.mp4";
 
 interface Stat {
   value: number;
@@ -42,8 +43,21 @@ const AnimatedNumber = ({ target, suffix, duration = 2 }: { target: number; suff
 };
 
 const StatsCounter = () => (
-  <section className="py-20 bg-foreground">
-    <div className="container mx-auto px-4">
+  <section className="relative py-20 overflow-hidden">
+    <div className="absolute inset-0 z-0">
+      <video
+        src={heroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/90" />
+    </div>
+    <div className="container mx-auto px-4 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +66,7 @@ const StatsCounter = () => (
         className="text-center mb-14"
       >
         <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Our Track Record</p>
-        <h2 className="font-serif text-3xl md:text-4xl font-bold text-background">
+        <h2 className="font-serif text-3xl md:text-4xl font-bold text-white">
           Numbers That Speak for <span className="gold-text-gradient">Themselves</span>
         </h2>
       </motion.div>
@@ -69,8 +83,8 @@ const StatsCounter = () => (
             <div className="mb-2">
               <AnimatedNumber target={stat.value} suffix={stat.suffix} />
             </div>
-            <p className="font-serif text-lg font-semibold text-background mb-1">{stat.label}</p>
-            <p className="text-xs text-background/50">{stat.description}</p>
+            <p className="font-serif text-lg font-semibold text-white mb-1">{stat.label}</p>
+            <p className="text-xs text-white/60">{stat.description}</p>
           </motion.div>
         ))}
       </div>
