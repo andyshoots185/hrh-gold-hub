@@ -44,5 +44,5 @@ Options -Indexes
 </FilesMatch>
 
 # Force HTTPS (enable if your Hostinger plan has SSL)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
