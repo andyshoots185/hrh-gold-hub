@@ -58,13 +58,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-transform duration-300 ease-out"
-      style={{
-        transform: navHidden ? "translateY(-100%)" : "translateY(0)",
-      }}
-    >
+    <>
+      {/* Gold price ticker — always sticky on mobile; hides on desktop while scrolling down */}
       <div
+        className="fixed top-0 left-0 right-0 z-[60] bg-background/95 backdrop-blur-md"
         style={{
           maxHeight: tickerVisible ? "3rem" : "0",
           opacity: tickerVisible ? 1 : 0,
@@ -74,6 +71,14 @@ const Navbar = () => {
       >
         <GoldPriceTicker />
       </div>
+
+      <nav
+        className="fixed left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border transition-all duration-300 ease-out"
+        style={{
+          top: tickerVisible ? "var(--ticker-h, 2.25rem)" : "0",
+          transform: navHidden ? "translateY(-120%)" : "translateY(0)",
+        }}
+      >
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoImg} alt="HRH Gold Invest" className="h-10 w-auto" />
@@ -133,7 +138,8 @@ const Navbar = () => {
           </Button>
         </div>
       )}
-    </nav>
+      </nav>
+    </>
   );
 };
 
